@@ -20,5 +20,10 @@ key = 'secret'
 HOTP(key, 0)             # '814628'
 HOTP(key, 0, digits=8)   # '31814628'
 HOTP(key, 13, digits=8)  # '81315566'
-TOTP(key, digits=6)     # <time-based-value>
-``` 
+TOTP(key, digits=6)      # <time-based-value>
+```
+
+tests
+=====
+
+To run the tests, simply run `python ./hotpie.py`
