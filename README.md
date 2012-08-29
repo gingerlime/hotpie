@@ -1,6 +1,8 @@
 hotpie
 ======
 
+[read more](http://blog.gingerlime.com/2010/once-upon-a-time/)
+
 OATH HOTP/TOTP implementation in python
 
 based on http://tools.ietf.org/html/rfc4226
