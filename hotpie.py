@@ -10,7 +10,7 @@ Parameter and function names kept inline with the RFC
 
 import hmac
 import hashlib
-import array
+import struct
 import time
 import unittest
 
@@ -22,7 +22,7 @@ def HOTP(K, C, digits=6):
 
     returns the OATH integer code with {digits} length
     """
-    C_bytes = _long_to_byte_array(C)
+    C_bytes = struct.pack("!Q", C)
     hmac_sha1 = hmac.new(key=K, msg=C_bytes,
                          digestmod=hashlib.sha1).hexdigest()
     return Truncate(hmac_sha1)[-digits:]
@@ -50,17 +50,6 @@ def Truncate(hmac_sha1):
     offset = int(hmac_sha1[-1], 16)
     binary = int(hmac_sha1[(offset * 2):((offset * 2) + 8)], 16) & 0x7fffffff
     return str(binary)
-
-
-def _long_to_byte_array(long_num):
-    """
-    helper function to convert a long number into a byte array
-    """
-    byte_array = array.array('B')
-    for i in reversed(range(0, 8)):
-        byte_array.insert(0, long_num & 0xff)
-        long_num >>= 8
-    return byte_array
 
 
 class HotpTest(unittest.TestCase):
