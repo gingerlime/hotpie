@@ -22,7 +22,7 @@ def HOTP(K, C, digits=6):
 
     returns the OATH integer code with {digits} length
     """
-    C_bytes = struct.pack("!Q", C)
+    C_bytes = struct.pack(b"!Q", C)
     hmac_sha1 = hmac.new(key=K, msg=C_bytes,
                          digestmod=hashlib.sha1).hexdigest()
     return Truncate(hmac_sha1)[-digits:]
@@ -37,7 +37,7 @@ def TOTP(K, digits=6, window=30):
 
     returns the OATH integer code with {digits} length
     """
-    C = long(time.time() / window)
+    C = int(time.time() / window)
     return HOTP(K, C, digits=digits)
 
 
@@ -58,16 +58,15 @@ class HotpTest(unittest.TestCase):
     Based on test vectors from http://www.ietf.org/rfc/rfc4226.txt
     """
     def setUp(self):
-        self.key_string = '12345678901234567890'
+        self.key_string = b'12345678901234567890'
 
     def test_hotp_vectors(self):
-        hotp_result_vector = [755224, 287082, 359152,
-                              969429, 338314, 254676,
-                              287922, 162583, 399871,
-                              520489, 060613]
-        for i in range(0, 10):
-            self.assertEquals(HOTP(self.key_string, i),
-                              str(hotp_result_vector[i]))
+        hotp_result_vector = ['755224', '287082', '359152',
+                              '969429', '338314', '254676',
+                              '287922', '162583', '399871',
+                              '520489']
+        for i, r in enumerate(hotp_result_vector):
+            self.assertEqual(HOTP(self.key_string, i), r)
 
     def test_totp(self):
         """
