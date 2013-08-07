@@ -61,13 +61,12 @@ class HotpTest(unittest.TestCase):
         self.key_string = b'12345678901234567890'
 
     def test_hotp_vectors(self):
-        hotp_result_vector = [755224, 287082, 359152,
-                              969429, 338314, 254676,
-                              287922, 162583, 399871,
-                              520489]
-        for i in range(0, 10):
-            self.assertEqual(HOTP(self.key_string, i),
-                              str(hotp_result_vector[i]))
+        hotp_result_vector = ['755224', '287082', '359152',
+                              '969429', '338314', '254676',
+                              '287922', '162583', '399871',
+                              '520489']
+        for i, r in enumerate(hotp_result_vector):
+            self.assertEqual(HOTP(self.key_string, i), r)
 
     def test_totp(self):
         """
