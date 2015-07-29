@@ -6,6 +6,7 @@ hotpie
 OATH HOTP/TOTP implementation in python
 
 based on http://tools.ietf.org/html/rfc4226
+         http://tools.ietf.org/html/rfc6238
 
 parameter and function names kept inline with the rfc
 (e.g. hotp, truncate, k, c etc)
@@ -23,6 +24,14 @@ HOTP(key, 0)             # '814628'
 HOTP(key, 0, digits=8)   # '31814628'
 HOTP(key, 13, digits=8)  # '81315566'
 TOTP(key, digits=6)      # <time-based-value>
+
+# you can also use different hash implementations by passing `digestmod`
+# (RFC4226 only specifies SHA-1,
+#  but RFC6238 explicitly mentions SHA-256 and SHA-512)
+from hashlib import sha512, sha256
+
+HOTP(key, 0, digits=8, digestmod=sha512)
+TOTP(key, digits=8, digestmod=sha256)
 ```
 
 tests
