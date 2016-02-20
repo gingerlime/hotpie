@@ -29,7 +29,7 @@ def HOTP(K, C, digits=6, digestmod=hashlib.sha1):
     return Truncate(hmac_digest)[-digits:]
 
 
-def TOTP(K, digits=6, window=30, clock=time.time(), digestmod=hashlib.sha1):
+def TOTP(K, digits=6, window=30, clock=None, digestmod=hashlib.sha1):
     """
     TOTP is a time-based variant of HOTP.
     It accepts only key K, since the counter is derived from the current time
@@ -38,6 +38,8 @@ def TOTP(K, digits=6, window=30, clock=time.time(), digestmod=hashlib.sha1):
 
     returns the OATH integer code with {digits} length
     """
+    if clock is None:
+        clock = time.time()
     C = int(clock / window)
     return HOTP(K, C, digits=digits, digestmod=digestmod)
 
