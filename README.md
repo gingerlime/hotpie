@@ -1,6 +1,8 @@
 hotpie
 ======
 
+[![Build Status](https://secure.travis-ci.org/gingerlime/hotpie.png?branch=master)](http://travis-ci.org/gingerlime/hotpie)
+
 [read more](http://blog.gingerlime.com/2010/once-upon-a-time/)
 
 OATH HOTP/TOTP implementation in python
