@@ -18,6 +18,10 @@ also including a simple unit test based on test vectors in the RFC
 usage
 =====
 
+```bash
+pip install hotpie
+```
+
 ```python
 from hotpie import HOTP, TOTP
 
