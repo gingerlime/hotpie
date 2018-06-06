@@ -2,6 +2,7 @@ hotpie
 ======
 
 [![Build Status](https://secure.travis-ci.org/gingerlime/hotpie.png?branch=master)](http://travis-ci.org/gingerlime/hotpie)
+[![PyPI](https://img.shields.io/pypi/v/hotpie.svg)](https://pypi.python.org/pypi/hotpie)
 
 [read more](http://blog.gingerlime.com/2010/once-upon-a-time/)
 
