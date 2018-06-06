@@ -6,7 +6,7 @@ python:
   - 3.5
   - pypy
 install:
-  - pip install pylint --use-mirrors --allow-external argparse --allow-unverified argparse
+  - pip install pylint --allow-external argparse --allow-unverified argparse
 script:
   - pylint --errors-only --additional-builtins=raw_input hotpie.py
   - python hotpie.py
