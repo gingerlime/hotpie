@@ -1,12 +1,11 @@
 language: python
 python:
   - 2.7
-  - 3.3
   - 3.4
   - 3.5
   - pypy
 install:
-  - pip install pylint --allow-external argparse --allow-unverified argparse
+  - pip install -U pylint enum34
 script:
   - pylint --errors-only --additional-builtins=raw_input hotpie.py
   - python hotpie.py
