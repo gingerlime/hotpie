@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup
 import os
 
 try:
@@ -23,8 +23,7 @@ setup(
     author='Yoav Aner',
     author_email='yoav@gingerlime.com',
     url='https://github.com/gingerlime/hotpie',
-    packages=find_packages(exclude=['tests*']),
-    include_package_data=True,
+    py_modules=["hotpie"],
     zip_safe=False,
     license=open("LICENSE").read(),
     classifiers=[
