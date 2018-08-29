@@ -15,6 +15,8 @@ import struct
 import time
 import unittest
 
+__version__ = "1.0.4"
+
 
 def HOTP(K, C, digits=6, digestmod=hashlib.sha1):
     """

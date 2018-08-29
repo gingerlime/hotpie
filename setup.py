@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from setuptools import setup
-import os
+import hotpie
+
 
 try:
     from pypandoc import convert
@@ -17,7 +18,7 @@ except ImportError:
 
 setup(
     name='hotpie',
-    version=open('VERSION').read().strip(),
+    version=hotpie.__version__,
     description='OATH HOTP/TOTP implementation in python',
     long_description=read_md('README.md'),
     author='Yoav Aner',
